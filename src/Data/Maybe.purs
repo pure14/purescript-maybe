@@ -49,7 +49,7 @@ maybe' _ f (Just a) = f a
 -- | fromMaybe x (Just y) == y
 -- | ```
 fromMaybe :: forall a. a -> Maybe a -> a
-fromMaybe a = maybe a id
+fromMaybe a = maybe a (id :: forall a. a -> a)
 
 -- | Similar to `fromMaybe` but for use in cases where the default value may be
 -- | expensive to compute. As PureScript is not lazy, the standard `fromMaybe`
@@ -61,7 +61,7 @@ fromMaybe a = maybe a id
 -- | fromMaybe' (\_ -> x) (Just y) == y
 -- | ```
 fromMaybe' :: forall a. (Unit -> a) -> Maybe a -> a
-fromMaybe' a = maybe' a id
+fromMaybe' a = maybe' a (id :: forall a. a -> a)
 
 -- | Returns `true` when the `Maybe` value was constructed with `Just`.
 isJust :: forall a. Maybe a -> Boolean

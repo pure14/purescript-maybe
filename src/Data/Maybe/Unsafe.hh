@@ -20,12 +20,8 @@
 namespace Data_Maybe_Unsafe {
   using namespace PureScript;
 
-  // foreign import unsafeThrow :: forall a. String -> a
-
-  template <typename A>
-  inline auto unsafeThrow(const string& message) {
+  inline auto unsafeThrow(const any& message) -> any {
     throw runtime_error(message);
-    return A();
   }
 
 }
